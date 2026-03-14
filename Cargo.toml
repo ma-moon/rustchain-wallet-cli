@@ -1,0 +1,41 @@
+[package]
+name = "rustchain-wallet"
+version = "0.1.0"
+edition = "2021"
+description = "Native Rust CLI wallet for RustChain - secure key management, transfers, and balance queries"
+license = "MIT"
+repository = "https://github.com/ma-moon/rustchain-wallet-cli"
+keywords = ["rustchain", "wallet", "crypto", "blockchain", "cli"]
+categories = ["command-line-utilities", "cryptography"]
+
+[dependencies]
+# CLI parsing
+clap = { version = "4.4", features = ["derive", "env"] }
+
+# Cryptography
+ed25519-dalek = { version = "2.1", features = ["rand_core"] }
+bip39 = { version = "2.0", features = ["rand", "std"] }
+sha2 = "0.10"
+aes-gcm = "0.10"
+pbkdf2 = "0.12"
+
+# Async runtime
+tokio = { version = "1.35", features = ["full"] }
+reqwest = { version = "0.11", features = ["json", "rustls-tls"], default-features = false }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Utilities
+hex = "0.4"
+base64 = "0.22"
+rpassword = "7.3"
+zeroize = "1.7"
+chrono = "0.4"
+dirs = "5.0"
+rand = "0.8"
+
+[profile.release]
+lto = true
+strip = true
