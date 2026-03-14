@@ -389,7 +389,7 @@ async fn run(cli: Cli) -> Result<(), String> {
         Commands::Create { name } => {
             // Generate BIP39 mnemonic (24 words)
             let mut rng = rand::thread_rng();
-            let mnemonic = Mnemonic::generate_in_with(&mut rng, Language::English, 256)
+            let mnemonic = Mnemonic::generate_in_with(&mut rng, Language::English, 24)
                 .map_err(|e| format!("Failed to generate mnemonic: {}", e))?;
             let seed_phrase = mnemonic.to_string();
             
